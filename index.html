@@ -7,7 +7,7 @@
   body { 
     font-family: Arial, sans-serif; 
     text-align: center; 
-    background: url('https://media.istockphoto.com/id/1446305840/de/foto/tropischen-regenwald-von-costa-rica.jpg?s=612x612&w=0&k=20&c=mMisdnBG2mxljAjoT4cHPa3SEyjs9z2_xwtK6f06er4=') no-repeat center center fixed;
+    background: url('https://media.istockphoto.com/id/155099930/de/foto/tropische-blattfiedern-garten.jpg?s=612x612&w=0&k=20&c=RsmWfxiwwWrhRkPjzO9dRfpHRnKgQBm7ypWvpn6O-GQ=') no-repeat center center fixed;
     background-size: cover;
     color: white;
     margin: 0;
@@ -17,24 +17,25 @@
   h1 { 
     margin-top: 20px; 
     text-shadow: 2px 2px 4px #000; 
+    font-size: 6vw; /* responsiv */
   }
   #score { 
-    font-size: 24px; 
+    font-size: 5vw; 
     margin-top: 10px; 
     font-weight: bold; 
     text-shadow: 1px 1px 3px #000; 
   }
   #memory-board { 
     display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); 
     grid-gap: 10px; 
     justify-content: center; 
-    margin: 30px auto;
-    max-width: 700px;
+    margin: 20px auto;
+    max-width: 95%; 
   }
   .card {
-    width: 100px;
-    height: 100px;
+    width: 100%; 
+    aspect-ratio: 1; /* quadratische Karten */
     border-radius: 8px;
     border: 2px solid #333;
     cursor: pointer;
@@ -65,8 +66,8 @@
     opacity: 0.7; /* lässt den Hintergrund durchscheinen */
   }
   .card .back img {
-    width: 80px;
-    height: 80px;
+    width: 80%; /* passt sich an Kartengröße an */
+    height: 80%;
     border-radius: 8px;
   }
   .card .back {
@@ -74,7 +75,7 @@
   }
   #digits {
     margin-top: 20px;
-    font-size: 36px;
+    font-size: 8vw;
     font-weight: bold;
     color: #FFD700;
     text-shadow: 2px 2px 4px #000;
@@ -93,13 +94,43 @@
     transform:translate(-50%,-50%);
     background: rgba(0,0,0,0.8);
     color: #FFD700;
-    padding: 30px;
+    padding: 5vw;
     border-radius: 15px;
-    font-size: 28px;
+    font-size: 6vw;
     font-weight: bold;
     text-align: center;
     line-height: 1.5;
     z-index:1000;
+  }
+
+  /* Media Queries für kleine Smartphones */
+  @media (max-width: 400px) {
+    #memory-board {
+      grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+      grid-gap: 8px;
+    }
+
+    #score {
+      font-size: 18px;
+    }
+
+    #digits {
+      font-size: 28px;
+    }
+
+    #congrats {
+      font-size: 22px;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 24px;
+    }
+
+    .card .back img {
+      width: 75%;
+      height: 75%;
+    }
   }
 </style>
 </head>
@@ -113,7 +144,7 @@
 <div id="congrats">
   Glückwunsch! Du hast alle Früchte gefunden!<br><br>
   Hast Du dir auch die Koordinaten notiert?<br>
-  NEIN???<br>Dann musst du da jetzt nochmal durch ;)
+  NEIN??? Dann musst du da nochmal durch ;)
 </div>
 
 <script>
